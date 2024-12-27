@@ -14,20 +14,23 @@ import WebLayout from "@/Layouts/WebLayout";
 import { Link } from "@inertiajs/react";
 import { Assessment } from "@/types";
 import moment from "moment";
+import { useTranslation } from "react-i18next";
 export default function AssessmentList({
     assessments,
 }: {
     assessments: Assessment[];
 }) {
+    const { t } = useTranslation();
+
     return (
         <WebLayout>
             <div className="container mx-auto py-10">
                 <div className="flex justify-between items-center">
                     <CardTitle className="text-2xl font-bold">
-                        My Assessments
+                        {t("My Assessments")}
                     </CardTitle>
                     <Link href={route("assessments.create")}>
-                        <Button>Start New Assessment</Button>
+                        <Button>{t("Start New Assessment")}</Button>
                     </Link>
                 </div>
                 <Table className="mt-8">
@@ -72,7 +75,7 @@ export default function AssessmentList({
                                     >
                                         <Button variant="ghost" size="sm">
                                             <Eye className="mr-2 h-4 w-4" />
-                                            View Details
+                                            {t("View Details")}
                                         </Button>
                                     </Link>
                                 </TableCell>

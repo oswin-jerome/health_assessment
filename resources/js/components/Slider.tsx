@@ -4,11 +4,13 @@ import Autoplay from "embla-carousel-autoplay";
 import { Button } from "./ui/button";
 import { Link } from "@inertiajs/react";
 import { DotButton, useDotButton } from "./ui/SliderDotButton";
+import { useTranslation } from "react-i18next";
 
 export function EmblaCarousel() {
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
         Autoplay({ delay: 3000 }),
     ]);
+    const { t } = useTranslation();
     const { selectedIndex, scrollSnaps, onDotButtonClick } =
         useDotButton(emblaApi);
 
@@ -21,22 +23,22 @@ export function EmblaCarousel() {
                             <div className="flex flex-col items-center space-y-4 text-center">
                                 <div className="space-y-2">
                                     <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                                        Discover Your Ayurvedic Balance
+                                        {t("Discover Your Ayurvedic Balance")}
                                     </h1>
                                     <p className="mx-auto max-w-[700px] text-white/70 md:text-xl">
-                                        Take our personalized questionnaire and
-                                        receive a tailored diet and exercise
-                                        plan based on Ayurvedic principles.
+                                        {t("hero-description")}
                                     </p>
                                 </div>
                                 <div className="space-x-4">
                                     <Button asChild>
                                         <Link href="/assessments/create">
-                                            Start Questionnaire
+                                            {t("Take the Questionnaire")}
                                         </Link>
                                     </Button>
                                     <Button variant={"outline"} asChild>
-                                        <Link href="#">Astrology</Link>
+                                        <a href="https://wa.me/918618895713">
+                                            {t("Astrology")}
+                                        </a>
                                     </Button>
                                 </div>
                             </div>

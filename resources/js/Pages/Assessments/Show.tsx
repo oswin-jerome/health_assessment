@@ -11,6 +11,7 @@ import WebLayout from "@/Layouts/WebLayout";
 import { Assessment, AssessmentAnswer } from "@/types";
 import AyurvedicProfile from "./ResultProfile";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 const ShowAssessment = ({
     answers,
@@ -22,6 +23,7 @@ const ShowAssessment = ({
     const findPercentage = (val: number, total: number) => {
         return parseInt(((val / total) * 100).toString());
     };
+    const { t } = useTranslation();
 
     const findHighest = (kapha: number, pitta: number, vata: number) => {
         if (kapha >= pitta && kapha >= vata) {
@@ -49,7 +51,7 @@ const ShowAssessment = ({
                     <Card className="flex-1">
                         <CardHeader>
                             <CardTitle>
-                                Your customized diet plan is ready
+                                {t("Your customized diet plan is ready")}
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
@@ -64,24 +66,24 @@ const ShowAssessment = ({
                                     },
                                 })}
                             >
-                                <Button>Download</Button>
+                                <Button>{t("Download")}</Button>
                             </a>
                         </CardContent>
                     </Card>
                 </div>
                 <Card>
                     <CardHeader>
-                        <CardTitle>Result</CardTitle>
+                        <CardTitle>{t("Result")}</CardTitle>
                     </CardHeader>
                     <CardContent>
                         <Table>
                             <TableHeader>
                                 <TableRow>
-                                    <TableHead>Question</TableHead>
-                                    <TableHead>Your answer</TableHead>
-                                    <TableHead>Pitta</TableHead>
-                                    <TableHead>Vata</TableHead>
-                                    <TableHead>Kapha</TableHead>
+                                    <TableHead>{t("Question")}</TableHead>
+                                    <TableHead>{t("Your answer")}</TableHead>
+                                    <TableHead>{t("Pitta")}</TableHead>
+                                    <TableHead>{t("Vata")}</TableHead>
+                                    <TableHead>{t("Kapha")}</TableHead>
                                 </TableRow>
                             </TableHeader>
                             <TableBody>

@@ -76,7 +76,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
                             <SideMenu />
                         </SheetContent>
                     </Sheet>
-                    <h1 className="text-lg font-semibold">App Shell</h1>
+                    <h1 className="text-lg font-semibold">DashBoard</h1>
                 </div>
                 <Link href={route("logout")} method="post">
                     <Button variant="ghost" size="icon">

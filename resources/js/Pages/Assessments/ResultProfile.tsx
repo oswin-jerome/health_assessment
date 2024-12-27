@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { User } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface AyurvedicProfileProps {
     name: string;
@@ -19,6 +20,8 @@ export default function AyurvedicProfile({
     pitta,
     vata,
 }: AyurvedicProfileProps) {
+    const { t } = useTranslation();
+
     return (
         <Card className="w-full max-w-md">
             <CardHeader className="flex flex-row items-center space-x-4 pb-2">

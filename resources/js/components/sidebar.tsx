@@ -68,7 +68,7 @@ export default function AppShell() {
                             <SideMenu />
                         </SheetContent>
                     </Sheet>
-                    <h1 className="text-lg font-semibold">App Shell</h1>
+                    <h1 className="text-lg font-semibold">Dashboard</h1>
                 </div>
                 <Button variant="ghost" size="icon">
                     <LogOut className="h-6 w-6" />
