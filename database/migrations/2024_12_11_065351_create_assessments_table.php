@@ -19,12 +19,17 @@ return new class extends Migration
 
             $table->integer("total_questions")->default(0);
 
-            $table->unsignedBigInteger("user_id");
-            $table->foreign("user_id")->references("id")->on("users");
+            // $table->unsignedBigInteger("user_id");
+            // $table->foreign("user_id")->references("id")->on("users");
 
             $table->boolean("completed")->default(false);
             $table->string("name");
+            $table->string("phone");
+            $table->string("gender");
             $table->integer("age");
+            $table->enum("payment_status", ["pending", "failed", "paid"])->default("pending");
+            $table->string("instamojo_payment_id")->nullable();
+
 
             $table->timestamps();
         });

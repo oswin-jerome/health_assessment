@@ -8,6 +8,7 @@ import {
     HelpCircle,
     LogOut,
     LucideMessageCircleQuestion,
+    User2Icon,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -45,6 +46,11 @@ export default function AppShell({ children }: { children: ReactNode }) {
                     icon={LucideMessageCircleQuestion}
                     label="Questions"
                     href={route("admin.questions.index")}
+                />
+                <MenuItem
+                    icon={User2Icon}
+                    label="Assessments"
+                    href={route("admin.assessments.index")}
                 />
                 {/* <MenuItem icon={HelpCircle} label="Help" href="" /> */}
             </div>

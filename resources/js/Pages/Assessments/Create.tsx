@@ -28,7 +28,9 @@ export default function StartAssessment() {
 
     const { data, setData, post, errors } = useForm({
         name: "",
+        phone: "",
         age: "",
+        gender: "",
     });
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -62,6 +64,21 @@ export default function StartAssessment() {
                                 <InputError message={errors.name} />
                             </div>
                             <div className="space-y-2">
+                                <Label htmlFor="phone">Phone #</Label>
+                                <Input
+                                    id="phone"
+                                    placeholder="Enter your Phone #"
+                                    value={data.phone}
+                                    maxLength={10}
+                                    minLength={10}
+                                    onChange={(e) =>
+                                        setData("phone", e.target.value)
+                                    }
+                                    required
+                                />
+                                <InputError message={errors.phone} />
+                            </div>
+                            <div className="space-y-2">
                                 <Label htmlFor="age">Age</Label>
                                 <Input
                                     id="age"
@@ -77,8 +94,10 @@ export default function StartAssessment() {
                             <div className="space-y-2">
                                 <Label>Gender</Label>
                                 <RadioGroup
-                                    value={gender}
-                                    onValueChange={setGender}
+                                    value={data.gender}
+                                    onValueChange={(val) => {
+                                        setData("gender", val);
+                                    }}
                                     required
                                 >
                                     <div className="flex space-x-4">

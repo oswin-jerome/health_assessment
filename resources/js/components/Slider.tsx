@@ -45,8 +45,24 @@ export function EmblaCarousel() {
                         </div>
                     </section>
                 </div>
-                <div className="embla__slide bg-app-800">Slide 2</div>
-                <div className="embla__slide bg-app-800">Slide 3</div>
+                <div className="embla__slide bg-app-800">
+                    <div className="">
+                        <img
+                            src="/diet.jpg"
+                            className="w-full opacity-65"
+                            alt=""
+                        />
+                    </div>
+                </div>
+                <div className="embla__slide bg-app-800">
+                    <div className="">
+                        <img
+                            src="/diet2.jpg"
+                            className="w-full opacity-65 object-center h-full"
+                            alt=""
+                        />
+                    </div>
+                </div>
             </div>
             <div className="flex justify-center items-center gap-3  absolute z-40 bottom-4 left-0 right-0 ">
                 {scrollSnaps.map((_, index) => (

@@ -4,8 +4,10 @@ use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\AssessmentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\GuardAdminMiddleware;
+use App\Models\Assessment;
 use App\Models\Question;
 use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -31,15 +33,25 @@ Route::get('/admin', function () {
 
 Route::prefix("admin")->as("admin.")->group(function () {
     Route::resource("questions", QuestionController::class);
+    Route::get("assessments", function () {
+        $assessments = Assessment::orderBy("created_at", "desc")->get();
+        return Inertia::render("Admin/Assessments/Index", [
+            "assessments" => $assessments
+        ]);
+    })->name("assessments.index");
 })->middleware(['auth', 'verified', GuardAdminMiddleware::class])->name('admin');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::resource("assessments", AssessmentController::class);
-    Route::post("assessments/{assessment}", [AssessmentController::class, "submit"])->name("assessments.submit");
 });
+
+Route::resource("assessments", AssessmentController::class);
+Route::post("assessments/{assessment}", [AssessmentController::class, "submit"])->name("assessments.submit");
+Route::post("assessments/{assessment}/payment/callback", [AssessmentController::class, "paymentCallback"])
+    ->withoutMiddleware([VerifyCsrfToken::class])
+    ->name("assessments.instamojo.callback");
 
 Route::get("diet-plan", function (Request $request) {
 

@@ -31,44 +31,6 @@ const WebLayout = ({ children }: { children: ReactNode }) => {
                     >
                         {t("About")}
                     </Link>
-                    {page.props.auth.user ? (
-                        <>
-                            <Link
-                                href={route("dashboard")}
-                                className="rounded-md px-3 py-2 ring-1 ring-transparent transition hover:text-white/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                            >
-                                Dashboard
-                            </Link>
-                            <Link
-                                href={route("assessments.index")}
-                                className="rounded-md px-3 py-2 ring-1 ring-transparent transition hover:text-white/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                            >
-                                Assessments
-                            </Link>
-                            <Link
-                                href={route("logout")}
-                                method="post"
-                                className="rounded-md px-3 py-2 ring-1 ring-transparent transition hover:text-white/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                            >
-                                Logout
-                            </Link>
-                        </>
-                    ) : (
-                        <>
-                            <Link
-                                href={route("login")}
-                                className="rounded-md px-3 py-2 text-white ring-1 ring-transparent transition hover:text-white/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                            >
-                                Log in
-                            </Link>
-                            <Link
-                                href={route("register")}
-                                className="rounded-md px-3 py-2 text-white ring-1 ring-transparent transition hover:text-white/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                            >
-                                Register
-                            </Link>
-                        </>
-                    )}
                 </nav>
             </header>
             <div className="min-h-[92vh]  pt-14">{children}</div>

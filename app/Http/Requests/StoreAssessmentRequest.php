@@ -12,7 +12,7 @@ class StoreAssessmentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Auth::check();
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class StoreAssessmentRequest extends FormRequest
     {
         return [
             "name" => "string|required",
-            "age" => "numeric|required"
+            "age" => "numeric|required",
+            "phone" => "numeric|required",
+            "gender" => "string|required",
         ];
     }
 }

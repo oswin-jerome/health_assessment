@@ -22,6 +22,9 @@ export interface Assessment {
     user_id: number;
     completed: number;
     name: string;
+    phone: string;
+    payment_status: string;
+    instamojo_payment_id: string;
     age: number;
     created_at: Date;
     updated_at: Date;
