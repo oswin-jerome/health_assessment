@@ -66,6 +66,13 @@ const QuestionIndex = ({ questions }: { questions: Question[] }) => {
                                 </TableCell>
                                 <TableCell>
                                     <Link
+                                        onClick={(e) => {
+                                            var t = confirm("Are you sure?");
+                                            if (!t) {
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                            }
+                                        }}
                                         href={route(
                                             "admin.questions.destroy",
                                             question.id
