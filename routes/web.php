@@ -65,7 +65,7 @@ Route::get("diet-plan", function (Request $request) {
     }
 
     return response()->download(storage_path("app/diet/" . $element . ".pdf"));
-})->middleware('auth')->name("download");
+})->name("download");
 
 Route::get('/set-locale/{locale}', function ($locale) {
     session(['locale' => $locale]);

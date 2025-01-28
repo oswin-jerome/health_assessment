@@ -12,8 +12,8 @@ use App\Models\AssessmentAnswer;
 use App\Models\Question;
 use Exception;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
 use Inertia\Inertia;
+use Illuminate\Http\Request;
 
 class AssessmentController extends Controller
 {
@@ -98,7 +98,7 @@ class AssessmentController extends Controller
         try {
             $response = $instaMojoService->create_payment_request($assessment);
         } catch (Exception $e) {
-            dd($e);
+            dd("Unable to process payment, Please try again after some time...");
         }
 
         return Inertia::location($response["longurl"]);
@@ -153,6 +153,7 @@ class AssessmentController extends Controller
     {
         if ($request->get("status") == "Failed") {
             // $appointment->delete();
+
             $assessment->payment_status = "failed";
             $assessment->instamojo_payment_id = $request->get("payment_id");
             $assessment->save();
@@ -160,8 +161,10 @@ class AssessmentController extends Controller
             return response([], 200);
         }
 
+
         $assessment->payment_status = "paid";
         $assessment->instamojo_payment_id = $request->get("payment_id");
+       
         $assessment->save();
         return response([], 200);
     }
