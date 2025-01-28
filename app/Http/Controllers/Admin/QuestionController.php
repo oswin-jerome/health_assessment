@@ -37,7 +37,7 @@ class QuestionController extends Controller
         $data = $request->validated();
         Question::create($data);
 
-        return back();
+        return redirect(route("admin.questions.index"));
     }
 
     /**

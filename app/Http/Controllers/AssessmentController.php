@@ -115,7 +115,7 @@ class AssessmentController extends Controller
         }
 
         return Inertia::render("Assessments/Show", [
-            "answers" => AssessmentAnswerResource::collection($assessment->assessmentAnswers),
+            "answers" => AssessmentAnswerResource::collection($assessment->assessmentAnswers()->withTrashed()->get()),
             "assessment" => $assessment
         ]);
     }
@@ -164,7 +164,7 @@ class AssessmentController extends Controller
 
         $assessment->payment_status = "paid";
         $assessment->instamojo_payment_id = $request->get("payment_id");
-       
+
         $assessment->save();
         return response([], 200);
     }
