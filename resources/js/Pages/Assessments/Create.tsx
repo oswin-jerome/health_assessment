@@ -20,11 +20,13 @@ import {
 import WebLayout from "@/Layouts/WebLayout";
 import { useForm } from "@inertiajs/react";
 import InputError from "@/components/InputError";
+import { useTranslation } from "react-i18next";
 
 export default function StartAssessment() {
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
     const [gender, setGender] = useState("");
+    const { t, i18n } = useTranslation();
 
     const { data, setData, post, errors } = useForm({
         name: "",
@@ -45,13 +47,13 @@ export default function StartAssessment() {
                 <Card className="max-w-md mx-auto">
                     <CardHeader>
                         <CardTitle className="text-2xl font-bold text-center">
-                            Start Assessment
+                            {t("Start Assessment")}
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="space-y-2">
-                                <Label htmlFor="name">Full Name</Label>
+                                <Label htmlFor="name">{t("Full Name")}</Label>
                                 <Input
                                     id="name"
                                     placeholder="Enter your full name"
@@ -79,7 +81,7 @@ export default function StartAssessment() {
                                 <InputError message={errors.phone} />
                             </div>
                             <div className="space-y-2">
-                                <Label htmlFor="age">Age</Label>
+                                <Label htmlFor="age">{t("Age")}</Label>
                                 <Input
                                     id="age"
                                     placeholder="Enter age"
@@ -92,7 +94,7 @@ export default function StartAssessment() {
                                 <InputError message={errors.age} />
                             </div>
                             <div className="space-y-2">
-                                <Label>Gender</Label>
+                                <Label>{t("Gender")}</Label>
                                 <RadioGroup
                                     value={data.gender}
                                     onValueChange={(val) => {
@@ -128,7 +130,7 @@ export default function StartAssessment() {
                                 </RadioGroup>
                             </div>
                             <Button className="w-full" type="submit">
-                                Start Assessment
+                                {t("Start Assessment")}
                             </Button>
                         </form>
                     </CardContent>

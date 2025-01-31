@@ -28,7 +28,7 @@ const TestPage = ({
     const [loading, setLoading] = useState(false);
     const [submitting, setSubmitting] = useState(false);
     const [end, setEnd] = useState(false);
-    const { i18n } = useTranslation();
+    const { i18n, t } = useTranslation();
 
     const [answers, setAnswers] = useState({});
 
@@ -73,8 +73,10 @@ const TestPage = ({
                                 loop={true}
                             />
                             <p className="text-center">
-                                Please wait while we are analyzing your
-                                result...
+                                {t(
+                                    "Please wait while we are analyzing your result"
+                                )}
+                                ...
                             </p>
                         </div>
                     )}
@@ -120,7 +122,7 @@ const TestPage = ({
                     {end && !submitting && (
                         <div>
                             <Button onClick={submit} className="min-w-44">
-                                Submit
+                                {t("Submit")}
                             </Button>
                         </div>
                     )}
