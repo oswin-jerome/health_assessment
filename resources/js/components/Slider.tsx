@@ -18,6 +18,13 @@ export function EmblaCarousel() {
         <div className="embla relative" ref={emblaRef}>
             <div className="embla__container h-[60vh]">
                 <div className="embla__slide bg-app-800 text-white">
+                    <div className="h-full w-full absolute -z-10">
+                        <img
+                            src="/doc.jpg"
+                            className="w-full opacity-30 object-cover h-full"
+                            alt=""
+                        />
+                    </div>
                     <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
                         <div className="container px-4 md:px-6">
                             <div className="flex flex-col items-center space-y-4 text-center">
@@ -45,20 +52,20 @@ export function EmblaCarousel() {
                         </div>
                     </section>
                 </div>
-                <div className="embla__slide bg-app-800">
-                    <div className="">
+                <div className="embla__slide bg-app-800 ">
+                    <div className="h-full">
                         <img
                             src="/diet.jpg"
-                            className="w-full opacity-65"
+                            className="w-full h-full opacity-65 object-cover"
                             alt=""
                         />
                     </div>
                 </div>
                 <div className="embla__slide bg-app-800">
-                    <div className="">
+                    <div className="h-full">
                         <img
                             src="/diet2.jpg"
-                            className="w-full opacity-65 object-center h-full"
+                            className="w-full opacity-65 object-cover h-full"
                             alt=""
                         />
                     </div>

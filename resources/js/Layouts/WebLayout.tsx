@@ -15,7 +15,7 @@ const WebLayout = ({ children }: { children: ReactNode }) => {
                 <Link className="flex items-center justify-center" href="/">
                     <Leaf className="h-6 w-6 text-green-600" />
                     <span className="ml-2 text-2xl font-bold text-gray-900">
-                        AyurHealth
+                        AyushMitra
                     </span>
                 </Link>
                 <nav className="ml-auto flex gap-4 sm:gap-6">
