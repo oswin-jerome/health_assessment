@@ -115,7 +115,7 @@ class AssessmentController extends Controller
         }
 
         return Inertia::render("Assessments/Show", [
-            "answers" => AssessmentAnswerResource::collection($assessment->assessmentAnswers()->withTrashed()->get()),
+            "answers" => AssessmentAnswerResource::collection($assessment->assessmentAnswers()->get()),
             "assessment" => $assessment
         ]);
     }
