@@ -53,7 +53,10 @@ class QuestionController extends Controller
      */
     public function edit(Question $question)
     {
-        //
+
+        return Inertia::render("Admin/Question/Edit", [
+            "question" => $question
+        ]);
     }
 
     /**
@@ -61,7 +64,10 @@ class QuestionController extends Controller
      */
     public function update(UpdateQuestionRequest $request, Question $question)
     {
-        //
+        $data = $request->validated();
+        $question->update($data);
+
+        return redirect(route("admin.questions.index"));
     }
 
     /**

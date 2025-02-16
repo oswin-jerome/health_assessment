@@ -4,28 +4,29 @@ import InputLabel from "@/components/InputLabel";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import AppShell from "@/Layouts/AuthenticatedLayout";
+import { Question } from "@/types";
 import { useForm } from "@inertiajs/react";
 import { FormEvent } from "react";
 import { useTranslation } from "react-i18next";
 
-const CreateQuestionsPage = () => {
+const CreateQuestionsPage = ({ question }: { question: Question }) => {
     const { t, i18n } = useTranslation();
 
     // console.log(i18n.t("Home"));
-    const { setData, data, errors, post } = useForm({
-        question: "",
-        question_hi: "",
-        question_kn: "",
-        vata: false,
-        pitta: false,
-        kapha: false,
+    const { setData, data, errors, put } = useForm({
+        question: question.question,
+        question_hi: question.question_hi,
+        question_kn: question.question_kn,
+        vata: question.vata == 1,
+        pitta: question.pitta == 1,
+        kapha: question.kapha == 1,
     });
 
     const handler = (e: FormEvent) => {
         e.preventDefault();
-        post(route("admin.questions.store"), {
+        put(route("admin.questions.update", question.id), {
             onSuccess: () => {
-                alert("Added");
+                alert("Update");
             },
         });
     };
@@ -33,11 +34,12 @@ const CreateQuestionsPage = () => {
     return (
         <AppShell>
             <div>
-                <h3 className="font-bold text-2xl">Create Question</h3>
+                <h3 className="font-bold text-2xl">Edit Question</h3>
                 <form className="grid gap-4 mt-8" onSubmit={handler}>
                     <div>
                         <InputLabel>Question (en)</InputLabel>
                         <Input
+                            value={data.question}
                             onChange={(e) =>
                                 setData("question", e.target.value)
                             }
@@ -47,6 +49,7 @@ const CreateQuestionsPage = () => {
                     <div>
                         <InputLabel>Question (hi)</InputLabel>
                         <Input
+                            value={data.question_hi}
                             onChange={(e) =>
                                 setData("question_hi", e.target.value)
                             }
@@ -56,6 +59,7 @@ const CreateQuestionsPage = () => {
                     <div>
                         <InputLabel>Question (kn)</InputLabel>
                         <Input
+                            value={data.question_kn}
                             onChange={(e) =>
                                 setData("question_kn", e.target.value)
                             }
@@ -64,24 +68,27 @@ const CreateQuestionsPage = () => {
                     </div>
                     <div className="flex gap-2 items-center">
                         <Checkbox
+                            checked={data.pitta}
                             onChange={(e) => setData("pitta", e.target.checked)}
                         />
                         <InputLabel>Pitta</InputLabel>
                     </div>
                     <div className="flex gap-2 items-center">
                         <Checkbox
+                            checked={data.vata}
                             onChange={(e) => setData("vata", e.target.checked)}
                         />
                         <InputLabel>Vata</InputLabel>
                     </div>
                     <div className="flex gap-2 items-center">
                         <Checkbox
+                            checked={data.kapha}
                             onChange={(e) => setData("kapha", e.target.checked)}
                         />
                         <InputLabel>Kapha</InputLabel>
                     </div>
                     <div>
-                        <Button>Submit</Button>
+                        <Button>Update</Button>
                     </div>
                 </form>
             </div>

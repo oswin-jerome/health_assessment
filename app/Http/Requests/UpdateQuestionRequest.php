@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateQuestionRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdateQuestionRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -22,7 +23,12 @@ class UpdateQuestionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            "question" => "string|required",
+            "question_hi" => "string|required",
+            "question_kn" => "string|required",
+            "vata" => "boolean|required",
+            "pitta" => "boolean|required",
+            "kapha" => "boolean|required",
         ];
     }
 }

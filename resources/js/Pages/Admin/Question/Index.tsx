@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/table";
 import AppShell from "@/Layouts/AuthenticatedLayout";
 import { Link } from "@inertiajs/react";
-import { CheckIcon, Trash } from "lucide-react";
+import { CheckIcon, Edit2Icon, Trash } from "lucide-react";
 
 interface Question {
     id: number;
@@ -65,6 +65,17 @@ const QuestionIndex = ({ questions }: { questions: Question[] }) => {
                                     )}
                                 </TableCell>
                                 <TableCell>
+                                    <Link
+                                        href={route(
+                                            "admin.questions.edit",
+                                            question.id
+                                        )}
+                                        method="get"
+                                    >
+                                        <Button size={"icon"} variant={"ghost"}>
+                                            <Edit2Icon />
+                                        </Button>
+                                    </Link>
                                     <Link
                                         onClick={(e) => {
                                             var t = confirm("Are you sure?");
