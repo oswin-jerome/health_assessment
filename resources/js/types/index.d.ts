@@ -48,6 +48,9 @@ export interface Question {
     vata: number;
     pitta: number;
     kapha: number;
+    vata_neg: number;
+    pitta_neg: number;
+    kapha_neg: number;
     created_at: Date;
     updated_at: Date;
 }

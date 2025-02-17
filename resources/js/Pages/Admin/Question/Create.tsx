@@ -2,6 +2,7 @@ import Checkbox from "@/components/Checkbox";
 import InputError from "@/components/InputError";
 import InputLabel from "@/components/InputLabel";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import AppShell from "@/Layouts/AuthenticatedLayout";
 import { useForm } from "@inertiajs/react";
@@ -19,6 +20,9 @@ const CreateQuestionsPage = () => {
         vata: false,
         pitta: false,
         kapha: false,
+        vata_neg: false,
+        pitta_neg: false,
+        kapha_neg: false,
     });
 
     const handler = (e: FormEvent) => {
@@ -62,24 +66,68 @@ const CreateQuestionsPage = () => {
                         />
                         <InputError message={errors.question_kn} />
                     </div>
-                    <div className="flex gap-2 items-center">
-                        <Checkbox
-                            onChange={(e) => setData("pitta", e.target.checked)}
-                        />
-                        <InputLabel>Pitta</InputLabel>
-                    </div>
-                    <div className="flex gap-2 items-center">
-                        <Checkbox
-                            onChange={(e) => setData("vata", e.target.checked)}
-                        />
-                        <InputLabel>Vata</InputLabel>
-                    </div>
-                    <div className="flex gap-2 items-center">
-                        <Checkbox
-                            onChange={(e) => setData("kapha", e.target.checked)}
-                        />
-                        <InputLabel>Kapha</InputLabel>
-                    </div>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>For yes</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <div className="flex gap-2 items-center">
+                                <Checkbox
+                                    onChange={(e) =>
+                                        setData("pitta", e.target.checked)
+                                    }
+                                />
+                                <InputLabel>Pitta</InputLabel>
+                            </div>
+                            <div className="flex gap-2 items-center">
+                                <Checkbox
+                                    onChange={(e) =>
+                                        setData("vata", e.target.checked)
+                                    }
+                                />
+                                <InputLabel>Vata</InputLabel>
+                            </div>
+                            <div className="flex gap-2 items-center">
+                                <Checkbox
+                                    onChange={(e) =>
+                                        setData("kapha", e.target.checked)
+                                    }
+                                />
+                                <InputLabel>Kapha</InputLabel>
+                            </div>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>For No</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <div className="flex gap-2 items-center">
+                                <Checkbox
+                                    onChange={(e) =>
+                                        setData("pitta_neg", e.target.checked)
+                                    }
+                                />
+                                <InputLabel>Pitta</InputLabel>
+                            </div>
+                            <div className="flex gap-2 items-center">
+                                <Checkbox
+                                    onChange={(e) =>
+                                        setData("vata_neg", e.target.checked)
+                                    }
+                                />
+                                <InputLabel>Vata</InputLabel>
+                            </div>
+                            <div className="flex gap-2 items-center">
+                                <Checkbox
+                                    onChange={(e) =>
+                                        setData("kapha_neg", e.target.checked)
+                                    }
+                                />
+                                <InputLabel>Kapha</InputLabel>
+                            </div>
+                        </CardContent>
+                    </Card>
                     <div>
                         <Button>Submit</Button>
                     </div>

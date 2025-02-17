@@ -2,6 +2,7 @@ import Checkbox from "@/components/Checkbox";
 import InputError from "@/components/InputError";
 import InputLabel from "@/components/InputLabel";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import AppShell from "@/Layouts/AuthenticatedLayout";
 import { Question } from "@/types";
@@ -20,6 +21,9 @@ const CreateQuestionsPage = ({ question }: { question: Question }) => {
         vata: question.vata == 1,
         pitta: question.pitta == 1,
         kapha: question.kapha == 1,
+        vata_neg: question.vata_neg == 1,
+        pitta_neg: question.pitta_neg == 1,
+        kapha_neg: question.kapha_neg == 1,
     });
 
     const handler = (e: FormEvent) => {
@@ -66,27 +70,74 @@ const CreateQuestionsPage = ({ question }: { question: Question }) => {
                         />
                         <InputError message={errors.question_kn} />
                     </div>
-                    <div className="flex gap-2 items-center">
-                        <Checkbox
-                            checked={data.pitta}
-                            onChange={(e) => setData("pitta", e.target.checked)}
-                        />
-                        <InputLabel>Pitta</InputLabel>
-                    </div>
-                    <div className="flex gap-2 items-center">
-                        <Checkbox
-                            checked={data.vata}
-                            onChange={(e) => setData("vata", e.target.checked)}
-                        />
-                        <InputLabel>Vata</InputLabel>
-                    </div>
-                    <div className="flex gap-2 items-center">
-                        <Checkbox
-                            checked={data.kapha}
-                            onChange={(e) => setData("kapha", e.target.checked)}
-                        />
-                        <InputLabel>Kapha</InputLabel>
-                    </div>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>For Yes</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <div className="flex gap-2 items-center">
+                                <Checkbox
+                                    checked={data.pitta}
+                                    onChange={(e) =>
+                                        setData("pitta", e.target.checked)
+                                    }
+                                />
+                                <InputLabel>Pitta</InputLabel>
+                            </div>
+                            <div className="flex gap-2 items-center">
+                                <Checkbox
+                                    checked={data.vata}
+                                    onChange={(e) =>
+                                        setData("vata", e.target.checked)
+                                    }
+                                />
+                                <InputLabel>Vata</InputLabel>
+                            </div>
+                            <div className="flex gap-2 items-center">
+                                <Checkbox
+                                    checked={data.kapha}
+                                    onChange={(e) =>
+                                        setData("kapha", e.target.checked)
+                                    }
+                                />
+                                <InputLabel>Kapha</InputLabel>
+                            </div>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>For No</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <div className="flex gap-2 items-center">
+                                <Checkbox
+                                    checked={data.pitta_neg}
+                                    onChange={(e) =>
+                                        setData("pitta_neg", e.target.checked)
+                                    }
+                                />
+                                <InputLabel>Pitta</InputLabel>
+                            </div>
+                            <div className="flex gap-2 items-center">
+                                <Checkbox
+                                    checked={data.vata_neg}
+                                    onChange={(e) =>
+                                        setData("vata_neg", e.target.checked)
+                                    }
+                                />
+                                <InputLabel>Vata</InputLabel>
+                            </div>
+                            <div className="flex gap-2 items-center">
+                                <Checkbox
+                                    checked={data.kapha_neg}
+                                    onChange={(e) =>
+                                        setData("kapha_neg", e.target.checked)
+                                    }
+                                />
+                                <InputLabel>Kapha</InputLabel>
+                            </div>
+                        </CardContent>
+                    </Card>
                     <div>
                         <Button>Update</Button>
                     </div>

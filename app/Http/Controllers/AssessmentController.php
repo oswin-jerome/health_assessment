@@ -85,6 +85,16 @@ class AssessmentController extends Controller
                 if ($question->kapha) {
                     $kapha++;
                 }
+            } else {
+                if ($question->pitta_neg) {
+                    $pitta++;
+                }
+                if ($question->vata_neg) {
+                    $vata++;
+                }
+                if ($question->kapha_neg) {
+                    $kapha++;
+                }
             }
         }
 

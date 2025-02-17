@@ -30,6 +30,9 @@ class StoreQuestionRequest extends FormRequest
             "vata" => "boolean|required",
             "pitta" => "boolean|required",
             "kapha" => "boolean|required",
+            "vata_neg" => "boolean|required",
+            "pitta_neg" => "boolean|required",
+            "kapha_neg" => "boolean|required",
         ];
     }
 }
