@@ -17,11 +17,6 @@ const LanguageSwitcher = () => {
                 },
             }
         );
-
-        // .then(() => {
-        //     // i18n.changeLanguage(locale);
-        //     // window.location.reload(); // Reload to fetch new translations
-        // });
     };
 
     return (

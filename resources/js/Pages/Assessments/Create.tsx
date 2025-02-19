@@ -21,12 +21,27 @@ import WebLayout from "@/Layouts/WebLayout";
 import { useForm } from "@inertiajs/react";
 import InputError from "@/components/InputError";
 import { useTranslation } from "react-i18next";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { router } from "@inertiajs/react";
 
 export default function StartAssessment() {
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
     const [gender, setGender] = useState("");
     const { t, i18n } = useTranslation();
+
+    const changeLanguage = (locale: any) => {
+        router.get(
+            `/set-locale/${locale}`,
+            {},
+            {
+                onFinish: () => {
+                    i18n.changeLanguage(locale);
+                    window.location.reload(); // Reload to fetch new translations
+                },
+            }
+        );
+    };
 
     const { data, setData, post, errors } = useForm({
         name: "",
@@ -52,6 +67,34 @@ export default function StartAssessment() {
                     </CardHeader>
                     <CardContent>
                         <form onSubmit={handleSubmit} className="space-y-6">
+                            <Tabs
+                                defaultValue={i18n.language}
+                                className="w-full"
+                            >
+                                <TabsList className="w-full">
+                                    <TabsTrigger
+                                        onClick={() => changeLanguage("en")}
+                                        className="w-full"
+                                        value="en"
+                                    >
+                                        English
+                                    </TabsTrigger>
+                                    <TabsTrigger
+                                        onClick={() => changeLanguage("hi")}
+                                        className="w-full"
+                                        value="hi"
+                                    >
+                                        Hindi
+                                    </TabsTrigger>
+                                    <TabsTrigger
+                                        onClick={() => changeLanguage("kn")}
+                                        className="w-full"
+                                        value="kn"
+                                    >
+                                        Kannada
+                                    </TabsTrigger>
+                                </TabsList>
+                            </Tabs>
                             <div className="space-y-2">
                                 <Label htmlFor="name">{t("Full Name")}</Label>
                                 <Input
