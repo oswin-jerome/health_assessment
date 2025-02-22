@@ -8,7 +8,7 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import WebLayout from "@/Layouts/WebLayout";
-import { Assessment, AssessmentAnswer } from "@/types";
+import { Assessment, AssessmentAnswer, Question } from "@/types";
 import AyurvedicProfile from "./ResultProfile";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
@@ -23,7 +23,7 @@ const ShowAssessment = ({
     const findPercentage = (val: number, total: number) => {
         return parseInt(((val / total) * 100).toString());
     };
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
     const findHighest = (kapha: number, pitta: number, vata: number) => {
         if (kapha >= pitta && kapha >= vata) {
@@ -33,6 +33,17 @@ const ShowAssessment = ({
         } else {
             return "vata";
         }
+    };
+
+    const getQuestion = (question: Question) => {
+        if (i18n.language == "hi") {
+            return question.question_hi;
+        }
+        if (i18n.language == "kn") {
+            return question.question_kn;
+        }
+
+        return question.question;
     };
 
     const total = assessment.pitta + assessment.vata + assessment.kapha;
@@ -91,7 +102,7 @@ const ShowAssessment = ({
                                     return (
                                         <TableRow key={answer.id}>
                                             <TableHead>
-                                                {answer.question.question}
+                                                {getQuestion(answer.question)}
                                             </TableHead>
                                             <TableHead>
                                                 {answer.answer == "1"
