@@ -53,7 +53,7 @@ const WebLayout = ({ children }: { children: ReactNode }) => {
                     </Link>
                     <LanguageSwitcher />
                 </nav>
-                <div>sd</div>
+                <div></div>
             </footer>
         </div>
     );
