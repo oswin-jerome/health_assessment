@@ -23,7 +23,7 @@ class InstaMojoService
 		// dd($appointment->phone);
 		$response = $this->api->createPaymentRequest(array(
 			"purpose" => "AyushMitra",
-			"amount" => 9,
+			"amount" => env("PAYMENT_AMOUNT", 9),
 			"send_email" => false,
 			"email" => "ayushmithra111@gmail.com",
 			"phone" => $appointment->phone,
