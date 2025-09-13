@@ -23,7 +23,7 @@ export default function AyurvedicProfile({
     const { t } = useTranslation();
 
     return (
-        <Card className="w-full max-w-md">
+        <Card className="w-full ">
             <CardHeader className="flex flex-row items-center space-x-4 pb-2">
                 <div className="w-12 h-12 rounded-full bg-app-800 flex items-center justify-center">
                     <User className="w-6 h-6 text-app-500" />

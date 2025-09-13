@@ -1,1 +1,0 @@
-import{j as o}from"./app-BC7LvZa-.js";import{A as r}from"./AuthenticatedLayout-DV7MqAnv.js";import"./button-DctfQTEV.js";import"./createLucideIcon-B7WATTYU.js";import"./index-S4s1pVwA.js";import"./index-Dnmy3atv.js";import"./index-Bc3_GrG_.js";function l(){return o.jsx(r,{children:o.jsx("div",{className:"text-3xl font-bold",children:"Welcome back!!!"})})}export{l as default};

@@ -120,7 +120,7 @@ class AssessmentController extends Controller
     public function show(Assessment $assessment)
     {
 
-        if ($assessment->payment_status != "paid") {
+        if ($assessment->payment_status != "paid" && env("APP_ENV") != "local") {
             return redirect("404");
         }
 
